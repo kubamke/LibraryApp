@@ -1,0 +1,55 @@
+﻿@model List<LibraryApp.Application.DTOs.BookDto>
+
+<h2>Library Books</h2>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="input-group">
+        <input type="text"
+               name="query"
+               value="@ViewBag.Query"
+               class="form-control"
+               placeholder="Search by title, author or ISBN" />
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">
+            Clear
+        </a>
+    </div>
+</form>
+
+<a asp-action="Create">Add New Book</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>ISBN</th>
+            <th>Available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Year</td>
+                <td>@book.ISBN</td>
+                <td>@book.AvailableCopies</td>
+                <td>
+                    <form asp-action="Borrow" asp-route-id="@book.Id" method="post" style="display:inline">
+                        <button type="submit" class="btn btn-link p-0">Borrow</button>
+                    </form>
+                    <form asp-action="Return" asp-route-id="@book.Id" method="post" style="display:inline">
+                        <button type="submit" class="btn btn-link p-0">Return</button>
+                    </form>
+                    <a asp-action="History" asp-route-id="@book.Id" class="btn btn-link p-0">History</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

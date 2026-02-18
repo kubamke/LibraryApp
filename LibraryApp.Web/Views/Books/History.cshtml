@@ -1,0 +1,23 @@
+﻿@model List<LibraryApp.Application.DTOs.BorrowRecordDto>
+
+<h2>Borrow History</h2>
+
+<a asp-action="Index">Back</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Borrowed At</th>
+            <th>Returned At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.BorrowedAt</td>
+                <td>@(record.ReturnedAt?.ToString() ?? "Active")</td>
+            </tr>
+        }
+    </tbody>
+</table>

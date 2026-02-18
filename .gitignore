@@ -1,0 +1,72 @@
+# ===============================
+# .NET / C# Build & IDE artifacts
+# ===============================
+
+# Build outputs
+bin/
+obj/
+publish/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+*.rsuser
+*.vcxproj.user
+
+# Visual Studio cache
+.vs/
+*.vsconfig
+
+# Rider / JetBrains
+.idea/
+
+# VS Code
+.vscode/
+
+# ===============================
+# NuGet packages
+# ===============================
+*.nupkg
+packages/
+*.snupkg
+
+# ===============================
+# OS / System files
+# ===============================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# Databases
+# ===============================
+*.db
+*.sqlite
+*.db-journal
+TestDb_*.db
+
+# ===============================
+# Environment variables / secrets
+# ===============================
+.env
+.env.local
+.env.*.local
+
+# ===============================
+# Frontend / Static build output
+# ===============================
+wwwroot/dist/
+node_modules/
+
+# ===============================
+# Misc
+# ===============================
+*.pid
+*.seed
