@@ -1,5 +1,7 @@
 ﻿namespace LibraryApp.Domain.Entities;
 
+using System.Text.RegularExpressions;
+
 public class Book
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
@@ -17,10 +19,23 @@ public class Book
 
     public Book(string title, string author, int year, string isbn, int copies)
     {
-        if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("Title required");
-        if (string.IsNullOrWhiteSpace(author)) throw new ArgumentException("Author required");
-        if (year < 1500 || year > DateTime.UtcNow.Year) throw new ArgumentException("Invalid year");
-        if (copies < 0) throw new ArgumentException("Copies cannot be negative");
+        if (string.IsNullOrWhiteSpace(title))
+            throw new ArgumentException("Title required");
+
+        if (string.IsNullOrWhiteSpace(author))
+            throw new ArgumentException("Author required");
+
+        if (year < 1500 || year > DateTime.UtcNow.Year)
+            throw new ArgumentException("Invalid year");
+
+        if (string.IsNullOrWhiteSpace(isbn))
+            throw new ArgumentException("ISBN required");
+
+        if (!Regex.IsMatch(isbn, @"^\d{10}(\d{3})?$"))
+            throw new ArgumentException("Invalid ISBN format");
+
+        if (copies < 0)
+            throw new ArgumentException("Copies cannot be negative");
 
         Title = title;
         Author = author;

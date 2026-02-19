@@ -44,7 +44,15 @@ public class BooksController(IBookService service) : Controller
     [HttpPost("{id}/borrow")]
     public async Task<IActionResult> Borrow(Guid id)
     {
-        await _service.BorrowAsync(id);
+        try
+        {
+            await _service.BorrowAsync(id);
+        }
+        catch (InvalidOperationException ex)
+        {
+            TempData["Error"] = ex.Message;
+        }
+
         return RedirectToAction(nameof(Index));
     }
 

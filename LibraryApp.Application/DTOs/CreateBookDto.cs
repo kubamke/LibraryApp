@@ -12,7 +12,7 @@ public class CreateBookDto
     [MaxLength(200)]
     public string Author { get; set; } = string.Empty;
 
-    [Range(1500, 2100)]
+    [Range(1500, int.MaxValue)] 
     public int Year { get; set; }
 
     [Required]

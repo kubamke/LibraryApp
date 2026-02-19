@@ -40,7 +40,7 @@ public class BooksApiTests
     [Description(@"
         Given: A book that has not been borrowed
         When: Return is attempted on the book
-        Then: The API should return BadRequest and the available copies should remain unchanged")]
+        Then: The API should return NoContent and the available copies should remain unchanged")]
     public async Task ReturnBook_WhenNotBorrowed_ShouldDoNothing()
     {
         using var factory = new CustomWebApplicationFactory<Program>();

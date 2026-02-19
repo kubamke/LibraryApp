@@ -70,14 +70,7 @@ public class BookService(AppDbContext context, ILogger<BookService> logger) : IB
             .FirstOrDefaultAsync(b => b.Id == id)
             ?? throw new KeyNotFoundException("Book not found");
 
-        try
-        {
-            book.Borrow();
-        }
-        catch (InvalidOperationException)
-        {
-            throw;
-        }
+        book.Borrow();
 
         var newRecord = book.BorrowHistory.Last();
         _context.BorrowRecords.Add(newRecord);

@@ -48,6 +48,8 @@ desktop.ini
 # Databases
 # ===============================
 *.db
+*.db-wal
+*.db-shm
 *.sqlite
 *.db-journal
 TestDb_*.db

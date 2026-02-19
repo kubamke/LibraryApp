@@ -2,6 +2,13 @@
 
 <h2>Library Books</h2>
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
 <form method="get" asp-action="Index" class="mb-3">
     <div class="input-group">
         <input type="text"
